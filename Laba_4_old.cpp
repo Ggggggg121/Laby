@@ -85,7 +85,7 @@ int main() {
     cin >> x1 >> y1;
     if ( y1 > f(x1)) cout << "In parabola" << endl;
     else cout << "Outside parabola" << endl;
-    (1 < x1 <5 && 1 < y1 < -3) ? cout << "In circle " : cout << "outside circle " << endl;
+    (((1 < x1) && (x1 < 5)) && ((y1 < 1) && (y1 > -3)) ) ? cout << "In circle " << endl : cout << "outside circle " << endl;
     (y1 == 2 * x1 + 1) ? cout << "On linear func." << endl : cout << "Outside linear func" << endl;
 
 
