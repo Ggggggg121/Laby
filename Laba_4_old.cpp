@@ -6,6 +6,40 @@ double f(double x) {
     return (x-1) * (x-1);
 }
 
+string left_right_p(double x, double y) {
+  string p_l_r;
+    if ( y < f(x) && x < 1 ) p_l_r = "left of parabolla";
+    else if( y < f(x) && x > 1 ) p_l_r = "right of parabolla";
+    return p_l_r + '\n';
+}
+
+
+string right_left_l(double x, double y) {
+    string p_r_l;
+    if (y != 2 * x + 2 && x < -1) p_r_l = "left of line";
+    else if( y != 2 * x + 2 && x > -1 ) p_r_l = "right of line";
+    else if ( y == 2 * x + 2 ) p_r_l = "In line";
+    return p_r_l + '\n';
+}
+
+
+string right_left_c(double x, double y) {
+    string p_r_c;
+    double dist = (x - 2)*(x - 2) + (y - 2)*(y - 2);
+    if (dist < 4) p_r_c = "In circle";
+        else if (dist == 4) p_r_c = "On circle";
+        else if ( dist > 4 && x > 0 && y < 0 ) p_r_c = "right and down of circle";
+        else if ( dist > 4 && x > 0 && y > 0 ) p_r_c = "right and upper of circle";
+        else if ( dist > 4 && x < 0 && y < 0 ) p_r_c = "left and down of circle";
+        else if ( dist > 4 && x < 0 && y > 0 ) p_r_c = "left and upper of circle";
+        else if ( dist > 4 && x > 0 && y == 0 ) p_r_c = "right of circle";
+        else if ( dist > 4 && x < 0 && y == 0 ) p_r_c = "left of circle";
+    return p_r_c + '\n';
+}
+
+
+
+
 
 int main() {
     int natural;
@@ -65,12 +99,12 @@ int main() {
     double x,y;
     cin >> x >> y;
     double pi = M_PI;
-    double MIN,max,max_d,min;
+    double min_summary,max,max_downer,min;
     min = (pi < y) ?  pi : y;
-    max = (pi > y) ? pi : y;
-    MIN = (min < max) ? min : max;
-    max_d = (sin(x) > cos(y)) ? min : max;
-        cout << MIN/max_d << endl;
+    max = (y > x) ? y : x;
+    min_summary = (min < max) ? min : max;
+    max_downer = (sin(x) > cos(y)) ? sin(x): cos(y);
+        cout << min_summary/max_downer << endl;
 
 
 
@@ -83,10 +117,9 @@ int main() {
 //Ex.3
     double x1,y1;
     cin >> x1 >> y1;
-    if ( y1 > f(x1)) cout << "In parabola" << endl;
-    else cout << "Outside parabola" << endl;
-    (((1 < x1) && (x1 < 5)) && ((y1 < 1) && (y1 > -3)) ) ? cout << "In circle " << endl : cout << "outside circle " << endl;
-    (y1 == 2 * x1 + 1) ? cout << "On linear func." << endl : cout << "Outside linear func" << endl;
+    cout << left_right_p(x1,y1);
+    cout << right_left_l(x1,y1);
+    cout << right_left_c(x1,y1) << endl;
 
 
 
